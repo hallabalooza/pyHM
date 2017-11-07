@@ -15,17 +15,15 @@ contained in a telegram, stores these informations in a SQLite database and logs
 * create a PEM file into this directory, e.g. via `OpenSSL`
 * edit `pyHM.cfg` to your needs
 * start data acquisition
-** open a command line and change dir into `<PYHM>`
-** type `./pyHM_dattrc.sh` or `pyHM_dattrc.bat` whether you're on Linux or Windows
+  * open a command line and change dir into `<PYHM>`
+  * type `./pyHM_dattrc.sh` or `pyHM_dattrc.bat` whether you're on Linux or Windows
 * start web server
-** open a command line and change dir into `<PYHM>`
-** type `./pyHM_websrv.sh` or `pyHM_websrv.bat` whether you're on Linux or Windows
-
+  * open a command line and change dir into `<PYHM>`
+  * type `./pyHM_websrv.sh` or `pyHM_websrv.bat` whether you're on Linux or Windows
 * enjoy pyHM
-
 * close web server
-** set focus on the command line running web server
-** press `STRG+C`
+  * set focus on the command line running web server
+  * press `STRG+C`
 * close data acquisition
-** set focus on the command line running data acquisition
-** press `STRG+C`
+  * set focus on the command line running data acquisition
+  * press `STRG+C`
