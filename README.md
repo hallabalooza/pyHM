@@ -18,7 +18,7 @@ contained in a telegram, stores these informations in a SQLite database and logs
    e.g. via [pip](https://github.com/pypa/pip)
 * clone the repository pyHM into any directory <PYHM>
 * create a PEM key and certificate file into this directory, e.g. via `openssl req -new -newkey rsa:4096 -x509 -subj "/C=us/ST=florida/L=orlando/O= /OU= /CN= " -days 365 -nodes -keyout your_own_key.pem -out your_own_cert.pem`
-* edit *pyHM.cfg* to your needs
+* edit **pyHM.cfg** to your needs
 * start data acquisition
   * open a command line and change dir into *<PYHM>*
   * type `./pyHM_dattrc.sh start` or `pyHM_dattrc.bat` whether you're on Linux or Windows
@@ -54,9 +54,9 @@ contained in a telegram, stores these informations in a SQLite database and logs
 * configure a static IP address *<IPADDR>*
 * copy or checkout pyHM and all submodules into a directory *<PYHM>* in the home directory of *<USER>*
 * create a PEM key and certificate file into this directory, e.g. via `openssl req -new -newkey rsa:4096 -x509 -subj "/C=us/ST=florida/L=orlando/O= /OU= /CN= " -days 365 -nodes -keyout your_own_key.pem -out your_own_cert.pem`
-* edit *pyHM.cfg* to your needs
-* add the port configured in *pyHM.cfg* for the web server to the permanent configuration of the firewall
-* create a file `/usr/lib/udev/rules.d/97-hm.rules` with following content
+* edit **pyHM.cfg** to your needs
+* add the port configured in **pyHM.cfg** for the web server to the permanent configuration of the firewall
+* create a file **/usr/lib/udev/rules.d/97-hm.rules** with following content
   ```
   # Meter01
   SUBSYSTEMS=="usb", ATTRS{idVendor}=="<VID>", ATTRS{idProduct}=="<PID>", ATTRS{serial}=="<SERIAL>", MODE="0666", SYMLINK+="hm_<SERIAL>"
@@ -65,7 +65,7 @@ contained in a telegram, stores these informations in a SQLite database and logs
   # ...
   ```
   with *<VID>*, *<PID>* and *<SERIAL>* relating to the USB parameters of your specific USB IR adaptor
-* create a file `/etc/systemd/system/pyHM_websrv.service` with following content (as root)
+* create a file **/etc/systemd/system/pyHM_websrv.service** with following content (as root)
   ```
   [Unit]
   Description=pyHM web server
@@ -82,7 +82,7 @@ contained in a telegram, stores these informations in a SQLite database and logs
   [Install]
   WantedBy=multi-user.target
   ```
-* create a file `/etc/systemd/system/pyHM_dattrc.service` with following content (as root)
+* create a file **/etc/systemd/system/pyHM_dattrc.service** with following content (as root)
   ```
   [Unit]
   Description=pyHM data trace
@@ -97,7 +97,7 @@ contained in a telegram, stores these informations in a SQLite database and logs
   [Install]
   WantedBy=multi-user.target
   ```
-* edit in file `/etc/selinux/config` the value of key `SELINUX` to `disabled` (as root)
+* edit in file **/etc/selinux/config** the value of key **SELINUX** to **disabled** (as root)
 * call `systemctl enable pyHM_websrv.service`
 * call `systemctl enable pyHM_dattrc.service`
 * restart the Raspberry 3
