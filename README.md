@@ -34,11 +34,13 @@ contained in a telegram, stores these informations in a SQLite database and logs
 
 * download [Fedberry 27.1-beta1](http://download.fedberry.org/?dir=releases/27/images/armhfp/27.1-beta1)
 * write image on a SD Memory Card
-* place SD Memory Card in Raspberry 3
+* place SD Memory Card in [Raspberry 3](https://www.raspberrypi.org/)
 * start up Raspberry 3 and follow the instructions, e.g. configuring a root password, creating a user `<USER>`, ...
 * login as user `<USER>`
-* install Python 3.5.x modules `colorama`, `colorlog`, `pyserial` and `pyyaml`, e.g. via `dnfdragora`
-* install Linux application `screen`, e.g. via `dnfdragora`
+* install Python 3.5.x modules `[colorama](https://github.com/tartley/colorama)`,
+  `[colorlog](https://github.com/borntyping/python-colorlog)`, `[pyserial](https://github.com/pyserial/pyserial)` and
+  `[pyyaml](https://github.com/yaml/pyyaml)`, e.g. via `dnfdragora`
+* install Linux application `[screen](https://www.gnu.org/software/screen/manual/screen.html)`, e.g. via `dnfdragora`
 * configure a static IP address `<IPADDR>`
 * copy or checkout pyHM and all submodules into a directory `<PYHM>` in the home directory of `<USER>`
 * create a PEM key and certificate file into this directory, e.g. via `openssl req -new -newkey rsa:4096 -x509 -subj "/C=us/ST=florida/L=orlando/O= /OU= /CN= " -days 365 -nodes -keyout your_own_key.pem -out your_own_cert.pem`
@@ -88,7 +90,6 @@ contained in a telegram, stores these informations in a SQLite database and logs
 * edit in file `/etc/selinux/config` the value of key `SELINUX` to `disabled` (as root)
 * call `systemctl enable pyHM_websrv.service`
 * call `systemctl enable pyHM_dattrc.service`
-
 * restart the Raspberry 3
 * login as `<USER>` and start a shell or connect from the shell of another PC via `ssh <USER>@<IPADDR>`
 * call `screen -r pyHM_websrv` to attach the virtual shell where `pyHM_websrv` is running to the real shell; detach via `Ctrl+a,d`
