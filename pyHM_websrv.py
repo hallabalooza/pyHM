@@ -188,13 +188,13 @@ class HM_WebSrv_HTTPRequestHandler(http.server.BaseHTTPRequestHandler):
     """
     @brief   Handler for GET requests.
     """
-    pCFG = "hm.cfg"
+    pCFG = "pyHM.cfg"
     pDBF = self.__cfg["sqldb"].replace("\\", "/").strip(".").lstrip("/")
 
     if ( "images2" in self.path ): return
 
     if ( "/"+pCFG  == self.path ):
-      f = open("hm.cfg", "rb")
+      f = open(pCFG, "rb")
       self.send_response(200)
       self.send_header('Content-type', 'text/plain')
       self.end_headers()
@@ -203,7 +203,7 @@ class HM_WebSrv_HTTPRequestHandler(http.server.BaseHTTPRequestHandler):
       return
 
     if ( "/"+pDBF  == self.path ):
-      f = open("hm.sqlite", "rb")
+      f = open(pDBF, "rb")
       self.send_response(200)
       self.send_header('Content-type', 'application/octet-stream')
       self.end_headers()
@@ -498,6 +498,7 @@ class HM_WebSrv(object):
       self.__srv = http.server.HTTPServer(server_address, HM_WebSrv_HTTPRequestHandler(self.__cfg["websrv"]))
       self.__srv.socket = ssl.wrap_socket(self.__srv.socket,
                                           server_side=True,
+                                          keyfile=self.__cfg["websrv"]["key"],
                                           certfile=self.__cfg["websrv"]["cert"],
                                           ssl_version=ssl.PROTOCOL_TLSv1_2)
       self.__log.log(pyLOG.LogLvl.INFO, "configuring web server '{}/{}' done".format(self.__cfg["websrv"]["address"], self.__cfg["websrv"]["port"]))
